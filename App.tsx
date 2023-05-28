@@ -7,6 +7,7 @@ import LetsStarted2 from 'src/screens/Start/LetsStarted2';
 import LogIn from 'src/screens/Loginto/LogIn';
 import { NativeBaseProvider } from 'native-base';
 import { theme } from 'src/theme';
+import Register from 'src/screens/Loginto/Register';
 
 const Stack = createNativeStackNavigator();
 
@@ -42,6 +43,13 @@ function App(): JSX.Element {
           }}
           name="LogIn"
           component={LogIn}
+        />
+        <Stack.Screen
+          options={{
+            headerShown: false,
+          }}
+          name="Register"
+          component={Register}
         />
       </Stack.Navigator>
     </NavigationContainer>

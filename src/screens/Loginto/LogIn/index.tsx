@@ -1,31 +1,29 @@
-import React from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
-import Button from '../../../components/Button';
-import View from 'src/components/View';
-import Text from 'src/components/Text';
+import React, { FC } from 'react';
+import { Formik } from 'formik';
 import {
   FormControl,
   Heading,
   Stack,
-  WarningOutlineIcon,
-  VStack,
+  VStack
 } from 'native-base';
-import {Formik} from 'formik';
-import Input from 'src/components/Input';
+import {
+  SafeAreaView,
+  ScrollView,
+  TouchableOpacity
+} from 'react-native';
 import ButtonWithIcon from 'src/components/ButtonWithIcon';
+import Input from 'src/components/Input';
+import Text from 'src/components/Text';
+import View from 'src/components/View';
+import Button from 'src/components/Button';
 
-const LogIn = ({navigation}: {navigation: any}) => {
+const LogIn: FC<Props> = ({navigation}) => {
   const onChangeText = (value: string) => {
     console.log('value', value);
   };
   return (
     <SafeAreaView style={{backgroundColor: '#fff', flex: 1}}>
-      <ScrollView style={{marginTop: 118}}>
+      <ScrollView style={{marginTop: 38}}>
         <VStack space={2} mx="8">
           <Heading textAlign={'center'}>Hello Again!</Heading>
           <Text w={300} textAlign={'center'}>
@@ -34,7 +32,7 @@ const LogIn = ({navigation}: {navigation: any}) => {
           <LogInDetails />
         </VStack>
       </ScrollView>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={()=> navigation.navigate("Register")}>
         <Text textAlign={'center'} marginBottom={8}>
           New User? Create Account
         </Text>
@@ -88,6 +86,9 @@ const LogInDetails = () => {
   );
 };
 
+interface Props {
+  navigation: any;
+}
 /* const styles = StyleSheet.create({
   title: {
     fontFamily: 'Raleway',

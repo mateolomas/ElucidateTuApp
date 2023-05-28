@@ -11,6 +11,7 @@ const Input: FC<Props> = props => {
         backgroundColor="#F7F7F9"
         type={props.type}
         borderRadius={14}
+        borderWidth={0}
         defaultValue="12345"
         placeholder={props.placeholder}
       />
