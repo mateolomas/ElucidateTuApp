@@ -1,7 +1,7 @@
 import {Icon, IconButton} from 'native-base';
 import React, {FC} from 'react';
 import {Text, TouchableOpacity, TouchableOpacityProps} from 'react-native';
-import GoogleIcon from './GoogleIcon';
+import GoogleIcon from './Icons/GoogleIcon';
 
 const ButtonWithIcon: FC<ButtonOpacityProps> = ({onPress, children}) => {
   return (

@@ -1,13 +1,14 @@
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NativeBaseProvider } from 'native-base';
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Welcome from 'src/screens/Start/Welcome';
+import ForgotPassword from 'src/screens/Loginto/ForgotPassword';
+import LogIn from 'src/screens/Loginto/LogIn';
+import Register from 'src/screens/Loginto/Register';
 import LetsStarted from 'src/screens/Start/LetsStarted';
 import LetsStarted2 from 'src/screens/Start/LetsStarted2';
-import LogIn from 'src/screens/Loginto/LogIn';
-import { NativeBaseProvider } from 'native-base';
+import Welcome from 'src/screens/Start/Welcome';
 import { theme } from 'src/theme';
-import Register from 'src/screens/Loginto/Register';
 
 const Stack = createNativeStackNavigator();
 
@@ -50,6 +51,13 @@ function App(): JSX.Element {
           }}
           name="Register"
           component={Register}
+        />
+        <Stack.Screen
+          options={{
+            headerShown: false,
+          }}
+          name="ForgotPassword"
+          component={ForgotPassword}
         />
       </Stack.Navigator>
     </NavigationContainer>

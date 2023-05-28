@@ -29,7 +29,7 @@ const LogIn: FC<Props> = ({navigation}) => {
           <Text w={300} textAlign={'center'}>
             Fill your details or continue with social media
           </Text>
-          <LogInDetails />
+          <LogInDetails navigation={navigation}/>
         </VStack>
       </ScrollView>
       <TouchableOpacity onPress={()=> navigation.navigate("Register")}>
@@ -41,7 +41,7 @@ const LogIn: FC<Props> = ({navigation}) => {
   );
 };
 
-const LogInDetails = () => {
+const LogInDetails = (props: any) => {
   const handleChange = (value: string) => () => {};
   const handleBlur = (value: string) => () => {};
 
@@ -68,6 +68,7 @@ const LogInDetails = () => {
                 errorMessage="Please enter a valid password"
               />
               <TouchableOpacity
+                onPress={() => props.navigation.navigate('ForgotPassword')}
                 style={{
                   alignItems: 'flex-end',
                 }}>
