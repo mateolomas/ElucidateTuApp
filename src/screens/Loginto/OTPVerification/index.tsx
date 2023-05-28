@@ -13,7 +13,7 @@ const OTPVerification: FC<Props> = ({navigation}) => {
       <ScrollView style={{marginTop: 38}}>
         <VStack space={2} mx="8">
           <Heading textAlign={'center'}>OTP Verification</Heading>
-          <Text w={300} textAlign={'center'}>
+          <Text textAlign={'center'}>
             Please check your email to see the verification code
           </Text>
           <Text w={300}>OTP code</Text>
@@ -36,12 +36,13 @@ const OTPDetails = (props: any) => {
   const handleBlur = (value: string) => () => {};
 
   const handleReset = () => {
-    setShowModal(true);
+    /* setShowModal(true); */
+    props.navigation.navigate('HomeNavigator')
   };
 
   const onClose = () => {
-    setShowModal(false);
-    props.navigation.navigate('OTPVerification');
+    /* setShowModal(false);
+    props.navigation.navigate('Home'); */
   };
 
   return (
