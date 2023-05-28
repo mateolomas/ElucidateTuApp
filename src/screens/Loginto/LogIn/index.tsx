@@ -17,6 +17,7 @@ import {
 } from 'native-base';
 import {Formik} from 'formik';
 import Input from 'src/components/Input';
+import ButtonWithIcon from 'src/components/ButtonWithIcon';
 
 const LogIn = ({navigation}: {navigation: any}) => {
   const onChangeText = (value: string) => {
@@ -77,7 +78,9 @@ const LogInDetails = () => {
             </Stack>
 
             <Button onPress={handleSubmit}>Sign In</Button>
-            <Button onPress={handleSubmit}>Sign In With Google</Button>
+            <ButtonWithIcon onPress={handleSubmit}>
+              Sign In With Google
+            </ButtonWithIcon>
           </FormControl>
         )}
       </Formik>
