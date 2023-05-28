@@ -47,6 +47,7 @@ const RecoveryDetails = (props: any) => {
 
   const onClose = () => {
     setShowModal(false);
+    props.navigation.navigate('OTPVerification');
   };
 
   return (

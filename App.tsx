@@ -4,6 +4,7 @@ import { NativeBaseProvider } from 'native-base';
 import React from 'react';
 import ForgotPassword from 'src/screens/Loginto/ForgotPassword';
 import LogIn from 'src/screens/Loginto/LogIn';
+import OTPVerification from 'src/screens/Loginto/OTPVerification';
 import Register from 'src/screens/Loginto/Register';
 import LetsStarted from 'src/screens/Start/LetsStarted';
 import LetsStarted2 from 'src/screens/Start/LetsStarted2';
@@ -58,6 +59,13 @@ function App(): JSX.Element {
           }}
           name="ForgotPassword"
           component={ForgotPassword}
+        />
+        <Stack.Screen
+          options={{
+            headerShown: false,
+          }}
+          name="OTPVerification"
+          component={OTPVerification}
         />
       </Stack.Navigator>
     </NavigationContainer>
