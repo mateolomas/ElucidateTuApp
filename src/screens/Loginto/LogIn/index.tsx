@@ -3,11 +3,20 @@ import {
   SafeAreaView,
   ScrollView,
   StyleSheet,
-  Text,
   TouchableOpacity,
 } from 'react-native';
-
-import {Button, TextField, View} from 'react-native-ui-lib';
+import Button from '../../../components/Button';
+import View from 'src/components/View';
+import Text from 'src/components/Text';
+import {
+  FormControl,
+  Heading,
+  Stack,
+  WarningOutlineIcon,
+  VStack,
+} from 'native-base';
+import {Formik} from 'formik';
+import Input from 'src/components/Input';
 
 const LogIn = ({navigation}: {navigation: any}) => {
   const onChangeText = (value: string) => {
@@ -15,54 +24,17 @@ const LogIn = ({navigation}: {navigation: any}) => {
   };
   return (
     <SafeAreaView style={{backgroundColor: '#fff', flex: 1}}>
-      <View
-        style={{
-          position: 'relative',
-          width: 50,
-          height: 50,
-          paddingLeft: 20,
-        }}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Text style={{fontSize: 16, padding: 10, backgroundColor: "#F7F7F9"}}>
-            Back
-          </Text>
-        </TouchableOpacity>
-      </View>
-      <ScrollView style={{marginTop: 18}}>
-        <View flex padding-s5>
-          <Text style={styles.title}>Hello Again!</Text>
-          <Text style={styles.subtitle}>
+      <ScrollView style={{marginTop: 118}}>
+        <VStack space={2} mx="8">
+          <Heading textAlign={'center'}>Hello Again!</Heading>
+          <Text w={300} textAlign={'center'}>
             Fill your details or continue with social media
           </Text>
-        </View>
-        <View flex padding-s5>
           <LogInDetails />
-          <Button
-            label={'Sign In'}
-            size={Button.sizes.large}
-            borderRadius={14}
-            backgroundColor={'#0D6EFD'}
-            style={{marginTop: 24}}
-          />
-          <Button
-            label={'Sign In With Google'}
-            size={Button.sizes.large}
-            borderRadius={14}
-            labelStyle={{color: '#2b2b2b'}}
-            iconStyle={{
-              marginRight: 10,
-              width: 20,
-              height: 20,
-              tintColor: '#4285f4',
-            }}
-            style={{marginTop: 24}}
-            iconSource={require('../../../../assets/images/googleIcon.png')}
-            backgroundColor={'#F7F7F9'}
-          />
-        </View>
+        </VStack>
       </ScrollView>
       <TouchableOpacity>
-        <Text style={{...styles.label2, textAlign: 'center', fontSize: 16}}>
+        <Text textAlign={'center'} marginBottom={8}>
           New User? Create Account
         </Text>
       </TouchableOpacity>
@@ -76,26 +48,44 @@ const LogInDetails = () => {
 
   return (
     <View>
-      <Text style={styles.label}>Email address</Text>
-      <View style={styles.input}>
-        <TextField placeholder="xyz@gmail.com" padding-16 />
-      </View>
-      <Text style={styles.label}>Password</Text>
-      <View style={styles.input}>
-        <TextField placeholder="password" secureTextEntry padding-16 />
-      </View>
+      <Formik
+        initialValues={{email: '', password: ''}}
+        onSubmit={values => console.log(values)}>
+        {({handleChange, handleBlur, handleSubmit, values}) => (
+          <FormControl isRequired>
+            <Stack space={3} mb={'8'}>
+              <Input
+                label="Email"
+                placeholder="Enter your email"
+                helperText="We will send you a confirmation email"
+                type="text"
+                errorMessage="Please enter a valid email"
+              />
+              <Input
+                label="Password"
+                placeholder="Enter your password"
+                helperText="Password must be at least 8 characters"
+                type="password"
+                errorMessage="Please enter a valid password"
+              />
+              <TouchableOpacity
+                style={{
+                  alignItems: 'flex-end',
+                }}>
+                <Text>Recover password</Text>
+              </TouchableOpacity>
+            </Stack>
 
-      <TouchableOpacity
-        style={{
-          alignItems: 'flex-end',
-        }}>
-        <Text style={styles.label2}>Recover password</Text>
-      </TouchableOpacity>
+            <Button onPress={handleSubmit}>Sign In</Button>
+            <Button onPress={handleSubmit}>Sign In With Google</Button>
+          </FormControl>
+        )}
+      </Formik>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
+/* const styles = StyleSheet.create({
   title: {
     fontFamily: 'Raleway',
     fontStyle: 'normal',
@@ -139,6 +129,6 @@ const styles = StyleSheet.create({
   input: {
     backgroundColor: '#F7F7F9',
   },
-});
+}); */
 
 export default LogIn;

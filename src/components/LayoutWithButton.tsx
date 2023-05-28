@@ -38,7 +38,7 @@ interface Props {
 export const styles = StyleSheet.create({
     safeArea: {
       flex: 1,
-      backgroundColor: '#1483C2',
+      backgroundColor: '#0F513E',
       /* alignItems: 'center', */
     },
     container: {

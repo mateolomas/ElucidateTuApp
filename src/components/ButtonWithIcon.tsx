@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { Text, TouchableOpacity, TouchableOpacityProps } from 'react-native'
 
-const Button: FC<ButtonOpacityProps> = ({onPress, children}) => {
+const ButtonWithIcon: FC<ButtonOpacityProps> = ({onPress, children}) => {
   return (
     <TouchableOpacity
         onPress={onPress}
@@ -30,4 +30,4 @@ interface ButtonOpacityProps extends TouchableOpacityProps {
     children: React.ReactNode
 }
 
-export default Button
+export default ButtonWithIcon
