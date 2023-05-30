@@ -3,18 +3,9 @@ import React from 'react';
 
 export const SearchBar = () => {
   return (
-    <VStack
-      my="4"
-      space={5}
-      w="100%"
-      maxW="300px"
-      divider={
-        <Box px="2">
-          <Divider />
-        </Box>
-      }>
-      <VStack w="100%" space={5} alignSelf="center">
-        <Heading fontSize="lg">Cupertino</Heading>
+    
+      <VStack w="100%" space={5} alignSelf="center" px={8} pt={2}>
+        
         <Input
           placeholder="Search"
           variant="filled"
@@ -32,6 +23,6 @@ export const SearchBar = () => {
           } */
         />
       </VStack>
-    </VStack>
+    
   );
 };
