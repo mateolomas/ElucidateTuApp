@@ -38,7 +38,7 @@ if linkage != nil
   use_frameworks! :linkage => linkage.to_sym
 end
 
-target 'Intelligentia' do
+target 'Elucidate' do
   config = use_native_modules!
 
   # Flags change depending on the env values.
@@ -60,7 +60,7 @@ target 'Intelligentia' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
-  target 'IntelligentiaTests' do
+  target 'ElucidateTests' do
     inherit! :complete
     # Pods for testing
   end
