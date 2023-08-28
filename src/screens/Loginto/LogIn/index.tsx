@@ -1,15 +1,11 @@
-import React, { FC } from 'react';
-import { Formik } from 'formik';
+import React, {FC} from 'react';
+import {Formik} from 'formik';
+import {FormControl, Heading, Image, Stack, VStack} from 'native-base';
 import {
-  FormControl,
-  Heading,
-  Stack,
-  VStack
-} from 'native-base';
-import {
+  ImageBackground,
   SafeAreaView,
   ScrollView,
-  TouchableOpacity
+  TouchableOpacity,
 } from 'react-native';
 import ButtonWithIcon from 'src/components/ButtonWithIcon';
 import Input from 'src/components/Input';
@@ -24,15 +20,19 @@ const LogIn: FC<Props> = ({navigation}) => {
   return (
     <SafeAreaView style={{backgroundColor: '#fff', flex: 1}}>
       <ScrollView style={{marginTop: 38}}>
+        <ImageBackground
+          source={require('../../../../assets/images/logos/Logo.png')}
+          style={{width: 155, height: 125, marginLeft: 120}}
+        />
         <VStack space={2} mx="8">
-          <Heading textAlign={'center'}>Hello Again!</Heading>
+          <Heading textAlign={'center'}>Hello Again to Elucidate!</Heading>
           <Text w={300} textAlign={'center'}>
             Fill your details or continue with social media
           </Text>
-          <LogInDetails navigation={navigation}/>
+          <LogInDetails navigation={navigation} />
         </VStack>
       </ScrollView>
-      <TouchableOpacity onPress={()=> navigation.navigate("Register")}>
+      <TouchableOpacity onPress={() => navigation.navigate('Register')}>
         <Text textAlign={'center'} marginBottom={8}>
           New User? Create Account
         </Text>
@@ -52,7 +52,7 @@ const LogInDetails = (props: any) => {
         onSubmit={values => console.log(values)}>
         {({handleChange, handleBlur, handleSubmit, values}) => (
           <FormControl isRequired>
-            <Stack space={3} mb={'8'}>
+            <Stack space={2} mb={'8'}>
               <Input
                 label="Email"
                 placeholder="Enter your email"
@@ -76,10 +76,10 @@ const LogInDetails = (props: any) => {
               </TouchableOpacity>
             </Stack>
 
-            <Button onPress={handleSubmit}>Sign In</Button>
+            {/* <Button onPress={handleSubmit}>Sign In</Button>
             <ButtonWithIcon onPress={handleSubmit}>
               Sign In With Google
-            </ButtonWithIcon>
+            </ButtonWithIcon> */}
           </FormControl>
         )}
       </Formik>
