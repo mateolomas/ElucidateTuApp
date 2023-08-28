@@ -1,4 +1,6 @@
-import {extendTheme} from 'native-base';
+
+const deleter = () => {};
+/* import {extendTheme} from 'native-base';
 
 export const theme = extendTheme({
   components: {
@@ -67,3 +69,4 @@ export const theme = extendTheme({
     initialColorMode: 'light',
   },
 });
+ */

@@ -1,4 +1,4 @@
-import {Icon, IconButton} from 'native-base';
+
 import React, {FC} from 'react';
 import {Text, TouchableOpacity, TouchableOpacityProps} from 'react-native';
 import GoogleIcon from './Icons/GoogleIcon';

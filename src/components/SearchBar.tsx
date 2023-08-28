@@ -1,20 +1,12 @@
-import {
-  HStack,
-  Box,
-  Divider,
-  Heading,
-  Input,
-  Icon,
-  SearchIcon,
-  HamburgerIcon,
-} from 'native-base';
+
 import React from 'react';
 import {TouchableOpacity} from 'react-native';
+import View from './View';
 
 export const SearchBar = () => {
   return (
-    <HStack space={4} px={8} pt={2}>
-      <Input
+    <View /* space={4} px={8} pt={2} */>
+      {/* <Input
         placeholder="Looking for something?"
         bg="#FFF"
         w="80%"
@@ -25,13 +17,13 @@ export const SearchBar = () => {
             <SearchIcon />
           </Box>
         }
-      />
-
+      /> */}
+{/* 
       <TouchableOpacity>
         <Box bg="#0D6EFD" p={4} borderRadius={50}>
           <HamburgerIcon color="#FFF" />
         </Box>
-      </TouchableOpacity>
-    </HStack>
+      </TouchableOpacity> */}
+    </View>
   );
 };

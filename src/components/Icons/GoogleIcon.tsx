@@ -1,10 +1,10 @@
-import {Icon} from 'native-base';
+
 import React from 'react';
 import {G, Path, Svg} from 'react-native-svg';
 
 const GoogleIcon = () => {
   return (
-    <Icon size={'2xl'} viewBox="0 -15 70 80">
+   
       <G>
         <G transform="translate(-401.000000, -860.000000)">
           <G transform="translate(401.000000, 860.000000)">
@@ -31,7 +31,7 @@ const GoogleIcon = () => {
           </G>
         </G>
       </G>
-    </Icon>
+  
   );
 };
 

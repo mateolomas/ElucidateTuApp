@@ -1,6 +1,5 @@
 import React, {FC} from 'react';
 import {Formik} from 'formik';
-import {FormControl, Heading, Image, Stack, VStack} from 'native-base';
 import {
   ImageBackground,
   SafeAreaView,
@@ -12,11 +11,9 @@ import Input from 'src/components/Input';
 import Text from 'src/components/Text';
 import View from 'src/components/View';
 import Button from 'src/components/Button';
+import Heading from 'src/components/Heading';
 
 const LogIn: FC<Props> = ({navigation}) => {
-  const onChangeText = (value: string) => {
-    console.log('value', value);
-  };
   return (
     <SafeAreaView style={{backgroundColor: '#fff', flex: 1}}>
       <ScrollView style={{marginTop: 38}}>
@@ -24,16 +21,16 @@ const LogIn: FC<Props> = ({navigation}) => {
           source={require('../../../../assets/images/logos/Logo.png')}
           style={{width: 155, height: 125, marginLeft: 120}}
         />
-        <VStack space={2} mx="8">
-          <Heading textAlign={'center'}>Hello Again to Elucidate!</Heading>
-          <Text w={300} textAlign={'center'}>
-            Fill your details or continue with social media
-          </Text>
-          <LogInDetails navigation={navigation} />
-        </VStack>
+
+        <Heading>Hello Again to Elucidate!</Heading>
+        <Text>Fill your details or continue with social media</Text>
+        <LogInDetails navigation={navigation} />
       </ScrollView>
-      <TouchableOpacity onPress={() => navigation.navigate('Register')}>
-        <Text textAlign={'center'} marginBottom={8}>
+      <TouchableOpacity onPress={() => navigation.navigate('StartQuiz')}>
+        <Text
+          style={{
+            textAlign: 'center',
+          }}>
           New User? Create Account
         </Text>
       </TouchableOpacity>
@@ -42,45 +39,49 @@ const LogIn: FC<Props> = ({navigation}) => {
 };
 
 const LogInDetails = (props: any) => {
-  const handleChange = (value: string) => () => {};
-  const handleBlur = (value: string) => () => {};
-
+  const handleSign = () => {
+    console.log('sda')
+    props.navigation.navigate('StartQuiz');
+  };
   return (
-    <View>
+    <View style={{marginHorizontal: 30, marginTop: 4}}>
       <Formik
         initialValues={{email: '', password: ''}}
         onSubmit={values => console.log(values)}>
-        {({handleChange, handleBlur, handleSubmit, values}) => (
-          <FormControl isRequired>
-            <Stack space={2} mb={'8'}>
-              <Input
-                label="Email"
-                placeholder="Enter your email"
-                helperText="We will send you a confirmation email"
-                type="text"
-                errorMessage="Please enter a valid email"
-              />
-              <Input
-                label="Password"
-                placeholder="Enter your password"
-                helperText="Password must be at least 8 characters"
-                type="password"
-                errorMessage="Please enter a valid password"
-              />
-              <TouchableOpacity
-                onPress={() => props.navigation.navigate('ForgotPassword')}
-                style={{
-                  alignItems: 'flex-end',
-                }}>
-                <Text>Recover password</Text>
-              </TouchableOpacity>
-            </Stack>
-
-            {/* <Button onPress={handleSubmit}>Sign In</Button>
-            <ButtonWithIcon onPress={handleSubmit}>
+        {({handleChange, handleBlur, handleSubmit, values, errors}) => (
+          <View>
+            <Input
+              handleChange={handleChange('email')}
+              values={values.email}
+              handleBlur={handleBlur('email')}
+              label="Email"
+              placeholder="Enter your email"
+              helperText="We will send you a confirmation email"
+              type="text"
+              errorMessage={errors.email ? errors.email : ''}
+            />
+            <Input
+              values={values.password}
+              handleChange={handleChange('password')}
+              handleBlur={handleBlur('password')}
+              label="Password"
+              placeholder="Enter your password"
+              helperText="Password must be at least 8 characters"
+              type="password"
+              errorMessage={errors.password ? errors.password : ''}
+            />
+            <Button onPress={handleSign}>Sign In</Button>
+            <ButtonWithIcon onPress={() => console.log('sda')}>
               Sign In With Google
-            </ButtonWithIcon> */}
-          </FormControl>
+            </ButtonWithIcon>
+            <TouchableOpacity
+              onPress={() => props.navigation.navigate('ForgotPassword')}
+              style={{
+                alignItems: 'flex-end',
+              }}>
+              <Text>Recover password</Text>
+            </TouchableOpacity>
+          </View>
         )}
       </Formik>
     </View>

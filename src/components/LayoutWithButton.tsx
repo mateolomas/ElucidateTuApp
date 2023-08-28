@@ -1,10 +1,10 @@
-import React, {FC} from 'react';
-import {SafeAreaView, StyleSheet, View} from 'react-native';
+import React, { FC } from 'react';
+import { SafeAreaView, StyleSheet, View } from 'react-native';
 import Button from './Button';
 
-const LayoutWithButton: FC<Props> = ({children, buttonTitle, onPress}) => {
+const LayoutWithButton: FC<Props> = ({children, buttonTitle, onPress, backgroundColor = "#0f513e"}) => {
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <SafeAreaView style={{...styles.safeArea, backgroundColor: backgroundColor }}>
       <View style={styles.container}>
         {/*  <Text style={styles.mainTitle}>Welcome to Nike</Text>
         <View style={{flex: 1}} />
@@ -47,6 +47,7 @@ const Step = () => {
 interface Props {
   onPress: () => void;
   buttonTitle: string;
+  backgroundColor?: string;
   children: React.ReactNode;
 }
 

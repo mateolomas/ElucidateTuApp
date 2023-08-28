@@ -1,11 +1,14 @@
-import {AspectRatio, Box, HStack, Stack, Text} from 'native-base';
+
 import React from 'react';
-import {ImageBackground} from 'react-native';
+import {ImageBackground, View} from 'react-native';
 
 const CardPromo = () => {
-  return (
-    <Box background={'#FFF'} borderRadius={20} mx={8} maxWidth={350}>
-      <HStack height={100}>
+  return <View />;
+};
+
+{
+  /* <Box background={'#FFF'} borderRadius={20} mx={8} maxWidth={350}>
+      <Stack height={100}>
         <Stack p={4}>
           <Text fontFamily={'Raleway'}>Summer Sale</Text>
           <Text fontWeight={500} fontSize={30} color="#674DC5">
@@ -18,9 +21,8 @@ const CardPromo = () => {
             source={require('../../assets/images/sneakers4.png')}
           />
         </AspectRatio>
-      </HStack>
-    </Box>
-  );
-};
+      </Stack>
+    </Box> */
+}
 
 export default CardPromo;

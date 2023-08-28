@@ -1,33 +1,52 @@
-import {FormControl, WarningOutlineIcon} from 'native-base';
-import {Box, Input as InputNB} from 'native-base';
 import React, {FC} from 'react';
+import {TextInput, View} from 'react-native';
+import Text from './Text';
+import LabelInput from './LabelInput';
 
 const Input: FC<Props> = props => {
   return (
-    <Box>
-      <FormControl.Label>{props.label}</FormControl.Label>
-      <InputNB
-        {...props}
-        backgroundColor="#F7F7F9"
-        type={props.type}
-        borderRadius={14}
-        borderWidth={0}
-        defaultValue="12345"
-        placeholder={props.placeholder}
+    <View>
+      <LabelInput label={props.label} />
+      <TextInput
+        style={{
+          backgroundColor: '#ECECEC',
+          padding: 9,
+          marginVertical: 10,
+          borderRadius: 10,
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexDirection: 'row',
+        }}
+        onChangeText={props.handleChange}
+        onBlur={props.handleBlur}
+        value={props.values}
       />
-      <FormControl.HelperText>{props.helperText}</FormControl.HelperText>
-      <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
+      <Text
+        style={{
+          color: 'gray',
+          fontSize: 12,
+        }}>
+        {props.helperText}
+      </Text>
+      <Text
+        style={{
+          color: 'red',
+          fontSize: 12,
+        }}>
         {props.errorMessage}
-      </FormControl.ErrorMessage>
-    </Box>
+      </Text>
+    </View>
   );
 };
 
-interface Props extends React.ComponentProps<typeof InputNB> {
+interface Props {
   label: string;
+  handleChange: any;
+  handleBlur: any;
+  values: any;
   placeholder: string;
   helperText: string;
-  type: "text" | "password";
+  type: 'text' | 'password';
   errorMessage: string;
 }
 

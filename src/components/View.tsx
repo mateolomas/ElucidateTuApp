@@ -1,5 +1,5 @@
 import React, { Children, FC } from 'react'
-import { View as NBView } from 'native-base'
+import { View as NBView } from 'react-native'
 export const View: FC<Props> = (props) => {
   return (
     <NBView

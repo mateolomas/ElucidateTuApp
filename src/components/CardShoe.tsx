@@ -1,19 +1,12 @@
-import {
-  Box,
-  AspectRatio,
-  Center,
-  Stack,
-  Heading,
-  Text,
-  HStack,
-  Image,
-} from 'native-base';
 import React from 'react';
-import {ImageBackground, TouchableOpacity} from 'react-native';
+import {ImageBackground, TouchableOpacity, View} from 'react-native';
 
 const CardShoe = () => {
-  return (
-    <Box background={'#FFF'} borderRadius={20}>
+  return <View />;
+};
+
+{
+  /* <Box background={'#FFF'} borderRadius={20}>
       <Box width={160} height={200}>
         <Box>
           <AspectRatio w="100%" ratio={16 / 9} mt={4}>
@@ -47,8 +40,7 @@ const CardShoe = () => {
           <Text fontWeight={500}>$752.00</Text>
         </Stack>
       </Box>
-    </Box>
-  );
-};
+    </Box> */
+}
 
 export default CardShoe;
