@@ -1,5 +1,7 @@
-import {ScrollView, Text} from 'native-base';
+
 import React from 'react';
+import { ScrollView } from 'react-native';
+import Text from 'src/components/Text';
 
 const Profile = () => {
   return (

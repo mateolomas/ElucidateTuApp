@@ -1,11 +1,10 @@
 import React, {FC} from 'react';
 import {Text, TouchableOpacity, TouchableOpacityProps} from 'react-native';
 
-const Button: FC<ButtonOpacityProps> = ({onPress, children}) => {
+const Button: FC<ButtonOpacityProps> = ({onPress, children, ...props}) => {
   return (
     <TouchableOpacity
       onPress={onPress}
-      
       style={{
         backgroundColor: '#86DFD0',
         padding: 16,
@@ -13,15 +12,27 @@ const Button: FC<ButtonOpacityProps> = ({onPress, children}) => {
         borderRadius: 10,
         alignContent: 'center',
         alignItems: 'center',
-      }}>
-      <Text
-        style={{
-          fontFamily: 'Raleway',
-          fontWeight: '600',
-          color: 'black',
-        }}>
-        {children}
-      </Text>
+      }}
+      {...props}>
+      {props.disabled ? (
+        <Text
+          style={{
+            fontFamily: 'Raleway',
+            fontWeight: '600',
+            color: '#D9D9D9',
+          }}>
+          {children}
+        </Text>
+      ) : (
+        <Text
+          style={{
+            fontFamily: 'Raleway',
+            fontWeight: '600',
+            color: 'black',
+          }}>
+          {children}
+        </Text>
+      )}
     </TouchableOpacity>
   );
 };

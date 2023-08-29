@@ -1,13 +1,12 @@
-import { ScrollView, Text } from 'native-base'
-import React from 'react'
+import React from 'react';
+import {ScrollView, Text} from 'react-native';
 
 const Details = () => {
   return (
     <ScrollView>
-        <Text>Details</Text>
+      <Text>Details</Text>
+    </ScrollView>
+  );
+};
 
-        </ScrollView>
-  )
-}
-
-export default Details
+export default Details;

@@ -1,5 +1,6 @@
 import React from 'react';
 import {ImageBackground, View} from 'react-native';
+import Button from 'src/components/Button';
 import Heading from 'src/components/Heading';
 import LayoutWithButton from 'src/components/LayoutWithButton';
 import Text from 'src/components/Text';
@@ -24,6 +25,9 @@ const WelcomeToQuiz = ({navigation}: {navigation: any}) => {
         free!
       </Heading>
       <View style={{flex: 1}} />
+      <Button onPress={() => navigation.navigate('HomeNavigator')}>
+        Go to home screen
+      </Button>
     </LayoutWithButton>
   );
 };

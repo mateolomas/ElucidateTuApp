@@ -5,6 +5,7 @@ import InitialQuestions from 'src/screens/StartQuiz/InitialQuestions';
 import Question from 'src/screens/StartQuiz/Question';
 import Rulette from 'src/screens/StartQuiz/Rulette';
 import WelcomeToQuiz from 'src/screens/StartQuiz/WelcomeToQuiz';
+import BottomTabsHome from './BottomTabs';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +20,7 @@ const StartQuizNavigator = () => {
       <Stack.Screen name="Question" component={Question} />
       <Stack.Screen name="BeforeStart" component={BeforeStart} />
       <Stack.Screen name="Rulette" component={Rulette} />
+      <Stack.Screen name="HomeNavigator" component={BottomTabsHome} />
     </Stack.Navigator>
   );
 };

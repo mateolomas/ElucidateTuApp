@@ -1,13 +1,12 @@
-import { ScrollView, Text } from 'native-base'
-import React from 'react'
+import React from 'react';
+import {ScrollView, Text} from 'react-native';
 
 const Cart = () => {
   return (
     <ScrollView>
-        <Text>Cart</Text>
+      <Text>Cart</Text>
+    </ScrollView>
+  );
+};
 
-        </ScrollView>
-  )
-}
-
-export default Cart
+export default Cart;
