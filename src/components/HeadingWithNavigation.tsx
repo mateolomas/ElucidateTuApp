@@ -1,18 +1,30 @@
 import React from 'react';
-import View from './View';
-import Text from './Text';
 
-const Heading = ({
+import Text from './Text';
+import {Icon} from '@rneui/base';
+import {Touchable, TouchableOpacity, View} from 'react-native';
+
+const HeadingWithNavigation = ({
   children,
+  navigation,
   variant = 'h1',
-  color = '#2B2B2B',
 }: {
+  navigation: any;
   children: any;
-  color?: string;
   variant?: string;
 }) => {
   return (
-    <View>
+    <View
+      style={{
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+      }}>
+      <View style={{}}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Icon name="arrow-left" color={'#258A79'} size={28} />
+        </TouchableOpacity>
+      </View>
       <Text
         style={{
           marginHorizontal: 10,
@@ -20,12 +32,13 @@ const Heading = ({
           fontStyle: 'normal',
           fontWeight: variantMap[variant].fontWeight || '700',
           fontSize: variantMap[variant].fontSize || 32,
-          color: color || variantMap[variant].color,
+          color: variantMap[variant].color || '#2B2B2B',
           lineHeight: 38,
           textAlign: 'center',
         }}>
         {children}
       </Text>
+      <View style={{}}></View>
     </View>
   );
 };
@@ -72,4 +85,4 @@ const variantMap: Record<
   },
 };
 
-export default Heading;
+export default HeadingWithNavigation;

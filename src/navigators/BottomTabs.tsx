@@ -1,6 +1,8 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {Icon} from '@rneui/base';
 import React from 'react';
 import Heading from 'src/components/Heading';
+import Text from 'src/components/Text';
 import View from 'src/components/View';
 import Cart from 'src/screens/Home/Cart';
 import Details from 'src/screens/Home/Details';
@@ -21,10 +23,27 @@ const BottomTabsHome = () => {
           elevation: 0,
         },
         headerShown: false,
+
         tabBarShowLabel: false,
       }}>
-      <Tab.Screen name="Explore" component={Explore} />
-      <Tab.Screen name="Cart" component={Cart} />
+      <Tab.Screen
+        name="Explore"
+        component={Explore}
+        options={{
+          tabBarIcon: ({color}) => (
+            <Icon name="home" color={'#258A79'} size={28} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Cart"
+        component={Cart}
+        options={{
+          tabBarIcon: ({color}) => (
+            <Icon name="amp-stories" color={'#258A79'} size={28} />
+          ),
+        }}
+      />
       <Tab.Screen
         name="Favorites"
         component={Details}
@@ -34,24 +53,40 @@ const BottomTabsHome = () => {
               style={{
                 height: 60,
                 width: 60,
+
                 justifyContent: 'center',
                 alignItems: 'center',
-                /* backgroundColor: COLORS.white,
-                borderColor: COLORS.primary, */
+                backgroundColor: '#258A79',
+                borderColor: '#258A79',
                 borderWidth: 2,
                 borderRadius: 30,
                 top: -25,
                 elevation: 5,
               }}>
-              <Heading>+</Heading>
-              {/* <Icon name="search" color={COLORS.primary} size={28} /> */}
+              <Icon name="book" color={'white'} size={28} />
             </View>
           ),
         }}
       />
 
-      <Tab.Screen name="Notifications" component={Notifications} />
-      <Tab.Screen name="Profile" component={Profile} />
+      <Tab.Screen
+        name="Notifications"
+        component={Notifications}
+        options={{
+          tabBarIcon: ({color}) => (
+            <Icon name="chat" color={'#258A79'} size={28} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          tabBarIcon: ({color}) => (
+            <Icon name="settings" color={'#258A79'} size={28} />
+          ),
+        }}
+      />
     </Tab.Navigator>
   );
 };

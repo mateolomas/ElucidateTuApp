@@ -1,13 +1,20 @@
 import React from 'react';
-import {SafeAreaView, ScrollView, TouchableOpacity} from 'react-native';
+import {
+  SafeAreaView,
+  ScrollView,
+  Touchable,
+  TouchableOpacity,
+} from 'react-native';
 import CardShoe from 'src/components/CardShoe';
 import CardPromo from 'src/components/CardPromo';
 import {SearchBar} from 'src/components/SearchBar';
 import Heading from 'src/components/Heading';
 import View from 'src/components/View';
 import Text from 'src/components/Text';
+import {Avatar, Icon} from '@rneui/base';
+import CircularProgress from 'react-native-circular-progress-indicator';
 
-const Explore = () => {
+const Explore = ({navigation}: {navigation: any}) => {
   const [selected, setSelected] = React.useState(0);
   return (
     <View style={{flex: 1, position: 'relative'}}>
@@ -16,7 +23,7 @@ const Explore = () => {
           style={{
             marginTop: 70,
           }}>
-          <UserHeader />
+          <UserHeader onPress={() => navigation.navigate('Profile')} />
         </View>
         <View
           style={{
@@ -32,22 +39,36 @@ const Explore = () => {
               width: 90,
               alignContent: 'center',
               justifyContent: 'center',
-              backgroundColor: 'white',
               borderRadius: 50,
+              backgroundColor: 'white',
             }}>
-            <Text>70%</Text>
+            <CircularProgress
+              value={60}
+              radius={45}
+              progressValueStyle={{fontWeight: '300', color: 'yellow'}}
+              duration={2000}
+              progressValueColor={'black'}
+              maxValue={100}
+              activeStrokeColor={'#EBC846'}
+              inActiveStrokeColor={'#9b59b6'}
+              inActiveStrokeOpacity={0.2}
+              valueSuffix={'%'}
+            />
           </View>
           <Text style={{color: 'white', fontSize: 18}}>Task completed</Text>
-          <Text
-            style={{
-              color: 'black',
-              padding: 10,
-              borderRadius: 10,
-              fontSize: 18,
-              backgroundColor: 'white',
-            }}>
-            Nov 25
-          </Text>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('CalendarScreen')}>
+            <Text
+              style={{
+                color: 'black',
+                padding: 10,
+                borderRadius: 10,
+                fontSize: 18,
+                backgroundColor: 'white',
+              }}>
+              Nov 25
+            </Text>
+          </TouchableOpacity>
         </View>
         <ScrollView horizontal>{generateDays()}</ScrollView>
       </View>
@@ -80,7 +101,13 @@ const Explore = () => {
   );
 };
 
-const UserHeader = () => {
+export const UserHeader = ({
+  color = 'white',
+  onPress,
+}: {
+  color?: string;
+  onPress?: () => void;
+}) => {
   return (
     <View
       style={{
@@ -90,22 +117,22 @@ const UserHeader = () => {
         marginVertical: 10,
       }}>
       <View style={{flexDirection: 'row', gap: 10}}>
-        <View
-          style={{
-            height: 54,
-            width: 54,
-            borderRadius: 50,
-            backgroundColor: 'white',
-          }}>
-          <Text>Profile</Text>
-        </View>
+        <TouchableOpacity onPress={onPress}>
+          <Avatar
+            size={64}
+            rounded
+            source={{uri: 'https://randomuser.me/api/portraits/men/36.jpg'}}
+            containerStyle={{backgroundColor: '#6733b9'}}
+          />
+        </TouchableOpacity>
+
         <View
           style={{
             alignContent: 'center',
             justifyContent: 'center',
           }}>
-          <Text style={{color: 'white'}}>Hi, User</Text>
-          <Text style={{color: 'white'}}>Lets's learn together</Text>
+          <Text style={{color: color}}>Hi, User</Text>
+          <Text style={{color: color}}>Lets's learn together</Text>
         </View>
       </View>
       <View
@@ -113,10 +140,13 @@ const UserHeader = () => {
           height: 54,
           width: 54,
           borderRadius: 50,
-          backgroundColor: 'white',
+          borderColor: color,
+          borderWidth: 1,
+          alignContent: 'center',
+          justifyContent: 'center',
         }}>
         <View>
-          <Text>1</Text>
+          <Icon name="notifications" color={color} size={28} />
         </View>
       </View>
     </View>
@@ -211,16 +241,37 @@ export const CategoryCard = ({
         <View
           style={{
             flexDirection: 'row',
+            position: 'relative',
           }}>
-          <Avatar />
-          <Avatar />
+          <View
+            style={{
+              left: -20,
+            }}>
+            <Avatar
+              size={36}
+              rounded
+              source={{uri: 'https://randomuser.me/api/portraits/men/36.jpg'}}
+              containerStyle={{backgroundColor: '#6733b9'}}
+            />
+          </View>
+          <View
+            style={{
+              position: 'absolute',
+            }}>
+            <Avatar
+              size={36}
+              rounded
+              source={{uri: 'https://randomuser.me/api/portraits/men/36.jpg'}}
+              containerStyle={{backgroundColor: '#6733b9'}}
+            />
+          </View>
         </View>
       </View>
     </TouchableOpacity>
   );
 };
 
-const Avatar = () => {
+/* const Avatar = () => {
   return (
     <View
       style={{
@@ -232,7 +283,7 @@ const Avatar = () => {
       <Text>Avatar</Text>
     </View>
   );
-};
+}; */
 
 const generateDays = () => {
   const days = [];

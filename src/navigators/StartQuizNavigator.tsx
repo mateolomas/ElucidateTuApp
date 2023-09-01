@@ -6,6 +6,8 @@ import Question from 'src/screens/StartQuiz/Question';
 import Rulette from 'src/screens/StartQuiz/Rulette';
 import WelcomeToQuiz from 'src/screens/StartQuiz/WelcomeToQuiz';
 import BottomTabsHome from './BottomTabs';
+import CalendarScreen from 'src/screens/Calendar';
+import ChatWithBot from 'src/screens/ChatWithBot';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,6 +23,8 @@ const StartQuizNavigator = () => {
       <Stack.Screen name="BeforeStart" component={BeforeStart} />
       <Stack.Screen name="Rulette" component={Rulette} />
       <Stack.Screen name="HomeNavigator" component={BottomTabsHome} />
+      <Stack.Screen name="CalendarScreen" component={CalendarScreen} />
+      <Stack.Screen name="ChatWithBot" component={ChatWithBot} />
     </Stack.Navigator>
   );
 };
