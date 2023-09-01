@@ -9,7 +9,7 @@ import StartQuizNavigator from 'src/navigators/StartQuizNavigator';
 function App(): JSX.Element {
   return (
     <NavigationContainer>
-    <StartQuizNavigator />
+      <LoginNavigator />
     </NavigationContainer>
   );
 }

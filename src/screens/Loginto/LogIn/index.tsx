@@ -26,7 +26,7 @@ const LogIn: FC<Props> = ({navigation}) => {
         <Text>Fill your details or continue with social media</Text>
         <LogInDetails navigation={navigation} />
       </ScrollView>
-      <TouchableOpacity onPress={() => navigation.navigate('StartQuiz')}>
+      <TouchableOpacity onPress={() => navigation.navigate('Register')}>
         <Text
           style={{
             textAlign: 'center',

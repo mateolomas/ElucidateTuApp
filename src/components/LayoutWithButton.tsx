@@ -1,10 +1,29 @@
-import React, { FC } from 'react';
-import { SafeAreaView, StyleSheet, View } from 'react-native';
+import React, {FC} from 'react';
+import {SafeAreaView, StyleSheet, TouchableOpacity, View} from 'react-native';
 import Button from './Button';
+import {Icon} from '@rneui/base';
 
-const LayoutWithButton: FC<Props> = ({children, buttonTitle, onPress, backgroundColor = "#0f513e"}) => {
+const LayoutWithButton: FC<Props> = ({
+  children,
+  buttonTitle,
+  onPress,
+  onBack,
+  backgroundColor = '#0f513e',
+}) => {
   return (
-    <SafeAreaView style={{...styles.safeArea, backgroundColor: backgroundColor }}>
+    <SafeAreaView
+      style={{...styles.safeArea, backgroundColor: backgroundColor}}>
+      {onBack && (
+        <View
+          style={{
+            alignSelf: 'flex-start',
+          }}>
+          <TouchableOpacity onPress={onBack}>
+            <Icon name="arrow-left" color={'white'} size={38} />
+          </TouchableOpacity>
+        </View>
+      )}
+
       <View style={styles.container}>
         {/*  <Text style={styles.mainTitle}>Welcome to Nike</Text>
         <View style={{flex: 1}} />
@@ -46,6 +65,7 @@ const Step = () => {
 };
 interface Props {
   onPress: () => void;
+  onBack?: () => void;
   buttonTitle: string;
   backgroundColor?: string;
   children: React.ReactNode;
