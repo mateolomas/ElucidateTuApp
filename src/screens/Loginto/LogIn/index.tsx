@@ -41,7 +41,7 @@ const LogIn: FC<Props> = ({navigation}) => {
 const LogInDetails = (props: any) => {
   const handleSign = () => {
     console.log('sda')
-    props.navigation.navigate('StartQuiz');
+    props.navigation.navigate('HomeNavigator');
   };
   return (
     <View style={{marginHorizontal: 30, marginTop: 4}}>

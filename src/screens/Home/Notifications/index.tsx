@@ -1,10 +1,10 @@
+import {Avatar} from '@rneui/base';
 import React from 'react';
 import {SafeAreaView, ScrollView, TouchableOpacity} from 'react-native';
-import Text from 'src/components/Text';
-import {UserHeader} from '../Explore';
 import Heading from 'src/components/Heading';
+import Text from 'src/components/Text';
 import View from 'src/components/View';
-import {Avatar} from '@rneui/base';
+import {UserHeader} from '../Explore';
 
 const Notifications = ({
   navigation,

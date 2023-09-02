@@ -1,4 +1,5 @@
-import React, {FC, useState} from 'react';
+import {Input} from '@rneui/base';
+import React, {FC, useEffect, useState} from 'react';
 import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import {
   Gesture,
@@ -13,11 +14,15 @@ import Animated, {
   runOnJS,
 } from 'react-native-reanimated';
 import Button from 'src/components/Button';
-import {questions} from 'src/constants/questions';
+import Heading from 'src/components/Heading';
+import {initialQuestions, questions} from 'src/constants/questions';
 
 const Rulette = ({navigation, route}: {navigation: any; route: any}) => {
-  const questionNumber = route.params;
+  const trackQuestion = route.params;
+  const [questionNumber, setQuestionNumber] = useState(route.params);
+  const questionsLen = questions.length;
   const rotation = useSharedValue(0);
+
   const [currentAngle, setCurrentAngle] = useState(rotation.value);
 
   const animatedStyles = useAnimatedStyle(() => {
@@ -41,6 +46,8 @@ const Rulette = ({navigation, route}: {navigation: any; route: any}) => {
     );
   });
 
+  const [value, setValue] = useState('');
+
   const getCurrentColor = () => {
     if (currentAngle < 91) return 'Red';
     if (currentAngle < 181) return 'Green';
@@ -48,8 +55,53 @@ const Rulette = ({navigation, route}: {navigation: any; route: any}) => {
     return 'Blue';
   };
 
+  const color = getCurrentColor();
+
+  console.log({color, currentAngle, value, questionNumber, trackQuestion});
+  useEffect(() => {
+    if (currentAngle !== 0) {
+      if (questionNumber < questionsLen) {
+        setQuestionNumber(
+          //random value
+          Math.floor(Math.random() * questionsLen - (trackQuestion % 2) + 1),
+        );
+      }
+    }
+  }, [currentAngle, color, trackQuestion]);
+
   return (
     <SafeAreaView style={styles.container}>
+      {currentAngle !== 0 && (
+        <View
+          style={{
+            width: '100%',
+            justifyContent: 'center',
+            marginHorizontal: 10,
+            alignItems: 'center',
+          }}>
+          <Heading color="white">
+            {
+              initialQuestions.find(question => question.id === questionNumber)
+                ?.question
+            }
+          </Heading>
+          <Input
+            label={''}
+            value={value}
+            onChange={(e: any) => setValue(e.nativeEvent.text)}
+            placeholder={''}
+            errorMessage={''}
+            style={{
+              width: 300,
+              height: 40,
+              color: 'white',
+              borderRadius: 10,
+              marginTop: 20,
+            }}
+          />
+        </View>
+      )}
+
       <GestureHandlerRootView>
         <GestureDetector gesture={gesture}>
           <View style={styles.circleContainer}>
@@ -61,13 +113,22 @@ const Rulette = ({navigation, route}: {navigation: any; route: any}) => {
         </GestureDetector>
       </GestureHandlerRootView>
 
-      <Button
-        disabled={currentAngle === 0}
-        onPress={() => navigation.navigate('Question', 1)}>
-        Answer
-      </Button>
-
-      <Info currentAngle={currentAngle} currentColor={getCurrentColor()} />
+      {/* <Info currentAngle={currentAngle} currentColor={getCurrentColor()} /> */}
+      <View style={{marginTop: 30}}>
+        {trackQuestion === questionsLen ? (
+          <Button onPress={() => navigation.replace('ChatWithBot2')}>
+            Ready!
+          </Button>
+        ) : (
+          <Button
+            disabled={currentAngle === 0 || value === ''}
+            onPress={() =>
+              navigation.navigate('InitialQuestions', trackQuestion + 1)
+            }>
+            Next Question
+          </Button>
+        )}
+      </View>
     </SafeAreaView>
   );
 };

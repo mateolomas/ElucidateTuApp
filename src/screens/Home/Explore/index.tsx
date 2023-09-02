@@ -1,18 +1,12 @@
+import { Avatar, Icon } from '@rneui/base';
 import React from 'react';
 import {
-  SafeAreaView,
   ScrollView,
-  Touchable,
-  TouchableOpacity,
+  TouchableOpacity
 } from 'react-native';
-import CardShoe from 'src/components/CardShoe';
-import CardPromo from 'src/components/CardPromo';
-import {SearchBar} from 'src/components/SearchBar';
-import Heading from 'src/components/Heading';
-import View from 'src/components/View';
-import Text from 'src/components/Text';
-import {Avatar, Icon} from '@rneui/base';
 import CircularProgress from 'react-native-circular-progress-indicator';
+import Text from 'src/components/Text';
+import View from 'src/components/View';
 
 const Explore = ({navigation}: {navigation: any}) => {
   const [selected, setSelected] = React.useState(0);
@@ -45,7 +39,11 @@ const Explore = ({navigation}: {navigation: any}) => {
             <CircularProgress
               value={60}
               radius={45}
-              progressValueStyle={{fontWeight: '300', color: 'yellow'}}
+              progressValueStyle={{
+                fontWeight: '300',
+                color: 'yellow',
+                fontFamily: 'Poppins',
+              }}
               duration={2000}
               progressValueColor={'black'}
               maxValue={100}
@@ -58,19 +56,35 @@ const Explore = ({navigation}: {navigation: any}) => {
           <Text style={{color: 'white', fontSize: 18}}>Task completed</Text>
           <TouchableOpacity
             onPress={() => navigation.navigate('CalendarScreen')}>
-            <Text
+            <View
               style={{
-                color: 'black',
-                padding: 10,
                 borderRadius: 10,
-                fontSize: 18,
+                padding: 8,
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: 8,
                 backgroundColor: 'white',
               }}>
-              Nov 25
-            </Text>
+              <Icon name="calendar-month" color={'black'} size={28} />
+              <Text
+                style={{
+                  color: 'black',
+                  fontWeight: 'bold',
+                  fontSize: 14,
+                }}>
+                Nov 25
+              </Text>
+            </View>
           </TouchableOpacity>
         </View>
-        <ScrollView horizontal>{generateDays()}</ScrollView>
+        <ScrollView horizontal>
+          {generateDays(
+            (day: number) => () => {
+              navigation.navigate('CalendarScreen');
+            },
+          )}
+        </ScrollView>
       </View>
 
       <View
@@ -81,16 +95,19 @@ const Explore = ({navigation}: {navigation: any}) => {
         <Tabs />
         <ScrollView>
           <CategoryCard
+            key={1}
             title={'IELTS Speaking'}
             isSelected={false}
             onPress={() => {}}
           />
           <CategoryCard
+            key={2}
             title={'TOEIC 101'}
             isSelected={false}
             onPress={() => {}}
           />
           <CategoryCard
+            key={3}
             title={'TOFEL EXAM'}
             isSelected={false}
             onPress={() => {}}
@@ -226,17 +243,35 @@ export const CategoryCard = ({
           alignItems: 'center',
           marginHorizontal: 20,
         }}>
-        <View>
-          <Text>70%</Text>
-        </View>
-        <View>
-          <Text
-            style={{
-              textAlign: 'left',
-            }}>
-            {title}
-          </Text>
-          <Text>Over due, Nov 30, 2022</Text>
+        <View style={{flexDirection: 'row', gap: 10, alignItems: 'center'}}>
+          <CircularProgress
+            value={76}
+            radius={25}
+            progressValueStyle={{fontWeight: '300', color: 'yellow'}}
+            duration={2000}
+            progressValueColor={'black'}
+            maxValue={100}
+            activeStrokeColor={'#F16A4B'}
+            inActiveStrokeColor={'#9b59b6'}
+            inActiveStrokeOpacity={0.2}
+            valueSuffix={'%'}
+          />
+
+          <View>
+            <Text
+              style={{
+                textAlign: 'left',
+                fontWeight: 'bold',
+              }}>
+              {title}
+            </Text>
+            <Text
+              style={{
+                color: '#76EF83',
+              }}>
+              Over due, Nov 30, 2022
+            </Text>
+          </View>
         </View>
         <View
           style={{
@@ -285,42 +320,44 @@ export const CategoryCard = ({
   );
 }; */
 
-const generateDays = () => {
+const generateDays = (onPress: (day: number) => () => void) => {
   const days = [];
   for (let i = 1; i < 31; i++) {
-    days.push(<CalendarSlot day={i} />);
+    days.push(<CalendarSlot onPress={onPress(i)} key={i} day={i} />);
   }
   return days;
 };
 
-const CalendarSlot = ({day}: {day: number}) => {
+const CalendarSlot = ({day, onPress}: {day: number; onPress: () => void}) => {
   return (
-    <View
-      style={{
-        height: 100,
-        width: 50,
-        marginHorizontal: 5,
-        borderRadius: 50,
-        justifyContent: 'center',
-        alignContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'black',
-      }}>
-      <Text
+    <TouchableOpacity onPress={onPress}>
+      <View
         style={{
-          color: 'white',
-          fontSize: 18,
+          height: 100,
+          width: 50,
+          marginHorizontal: 5,
+          borderRadius: 50,
+          justifyContent: 'center',
+          alignContent: 'center',
+          alignItems: 'center',
+          backgroundColor: day === 4 ? 'white' : 'black',
         }}>
-        {day}
-      </Text>
-      <Text
-        style={{
-          color: 'white',
-          fontSize: 18,
-        }}>
-        Nov
-      </Text>
-    </View>
+        <Text
+          style={{
+            color: day === 4 ? 'black' : 'white',
+            fontSize: 18,
+          }}>
+          {day}
+        </Text>
+        <Text
+          style={{
+            color: day === 4 ? 'black' : 'white',
+            fontSize: 18,
+          }}>
+          Nov
+        </Text>
+      </View>
+    </TouchableOpacity>
   );
 };
 

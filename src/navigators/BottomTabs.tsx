@@ -1,6 +1,7 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Icon} from '@rneui/base';
 import React from 'react';
+import {TouchableOpacity} from 'react-native';
 import Heading from 'src/components/Heading';
 import Text from 'src/components/Text';
 import View from 'src/components/View';
@@ -12,7 +13,11 @@ import Profile from 'src/screens/Home/Profile';
 
 const Tab = createBottomTabNavigator();
 
-const BottomTabsHome = () => {
+const BottomTabsHome = ({
+  navigation,
+}: {
+  navigation: {navigate: (arg0: string) => void};
+}) => {
   return (
     <Tab.Navigator
       initialRouteName="Explore"
@@ -49,22 +54,24 @@ const BottomTabsHome = () => {
         component={Details}
         options={{
           tabBarIcon: ({color}) => (
-            <View
-              style={{
-                height: 60,
-                width: 60,
+            <TouchableOpacity onPress={() => navigation.navigate('WelcomeToQuiz')}>
+              <View
+                style={{
+                  height: 60,
+                  width: 60,
 
-                justifyContent: 'center',
-                alignItems: 'center',
-                backgroundColor: '#258A79',
-                borderColor: '#258A79',
-                borderWidth: 2,
-                borderRadius: 30,
-                top: -25,
-                elevation: 5,
-              }}>
-              <Icon name="book" color={'white'} size={28} />
-            </View>
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  backgroundColor: '#258A79',
+                  borderColor: '#258A79',
+                  borderWidth: 2,
+                  borderRadius: 30,
+                  top: -25,
+                  elevation: 5,
+                }}>
+                <Icon name="book" color={'white'} size={28} />
+              </View>
+            </TouchableOpacity>
           ),
         }}
       />

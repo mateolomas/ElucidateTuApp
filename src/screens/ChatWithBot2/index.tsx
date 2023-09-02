@@ -1,38 +1,52 @@
+import {Button} from '@rneui/base';
 import axios from 'axios';
-import React, {useEffect, useRef, useState} from 'react';
+import LottieView from 'lottie-react-native';
+import React, {useEffect, useState} from 'react';
 import {
-  Button,
-  SafeAreaView,
+  KeyboardAvoidingView,
   ScrollView,
   StyleSheet,
   Text,
   TextInput,
   View,
 } from 'react-native';
+import Heading from 'src/components/Heading';
 
-import HeadingWithNavigation from 'src/components/HeadingWithNavigation';
-
-const ChatWithBot = ({
+const ChatWithBot2 = ({
   navigation,
 }: {
   navigation: {navigate: (arg0: string) => void};
 }) => {
   const userId = '12313';
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
-      <HeadingWithNavigation navigation={navigation}>
-        Chatea con el bot
-      </HeadingWithNavigation>
+    <KeyboardAvoidingView
+      style={{
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        marginTop: 70,
+      }}
+      behavior="padding"
+      enabled
+      keyboardVerticalOffset={10}>
+      <Heading>Chatea con Elu</Heading>
       <Text
         style={{
           padding: 10,
           textAlign: 'center',
         }}>
-        This is the chat with the bot, here you can talk to the bot, get
-        inspired, and chat with the bot, ask it any question.
+        Esto ayudara a Elu a conocerte mejor y darte la mejor experiencia
       </Text>
+      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <LottieView
+          autoPlay
+          loop
+          style={{width: 300, height: 180}}
+          source={require('../../../assets/lottie/RobotNiceNice.json')}
+        />
+      </View>
       <Chat />
-    </SafeAreaView>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -86,6 +100,10 @@ const Chat = () => {
     mockupResponse(inputText);
   };
 
+  useEffect(() => {
+    mockupResponse('Hola, soy Elu!!');
+  }, []);
+
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.messageContainer}>
@@ -112,6 +130,7 @@ const Chat = () => {
           </View>
         )}
       </ScrollView>
+
       <View style={styles.inputContainer}>
         <TextInput
           value={inputText}
@@ -119,13 +138,18 @@ const Chat = () => {
           placeholder="Type your message here"
           style={styles.input}
         />
-        <Button title="Send" onPress={sendMessage} disabled={isLoading} />
+        <Button
+          title="Send"
+          onPress={sendMessage}
+          disabled={isLoading}
+          color={'success'}
+        />
       </View>
     </View>
   );
 };
 
-export default ChatWithBot;
+export default ChatWithBot2;
 
 const styles = StyleSheet.create({
   container: {
@@ -151,7 +175,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderTopWidth: 1,
     borderTopColor: 'lightgray',
-    paddingVertical: 5,
+    paddingVertical: 1,
   },
   input: {
     flex: 1,

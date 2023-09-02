@@ -6,11 +6,10 @@ import {ScrollView, Text} from 'react-native';
 
 const Cart = () => {
   const achievements = [
-    {title: 'Beginner', description: 'Completed 5 lessons', color: 'green'},
-    {title: 'Intermediate', description: 'Completed 10 lessons', color: 'blue'},
-    {title: 'Advanced', description: 'Completed 20 lessons', color: 'purple'},
-    {title: 'Master', description: 'Completed 50 lessons', color: 'orange'},
-    {title: 'Champion', description: 'Completed 100 lessons', color: 'red'},
+    {title: 'Reading', description: 'Completed 5 lessons', color: 'green'},
+    {title: 'Listening', description: 'Completed 10 lessons', color: 'blue'},
+    {title: 'Writing', description: 'Completed 20 lessons', color: 'purple'},
+    {title: 'Speaking', description: 'Completed 50 lessons', color: 'orange'},
   ];
 
   return (
@@ -22,10 +21,9 @@ const Cart = () => {
             justifyContent: 'space-between',
             flexDirection: 'row',
             alignContent: 'center',
-            alignItems: 'center'
-            
+            alignItems: 'center',
           }}>
-          <Text style={styles.heading}>Achievements</Text>
+          <Text style={styles.heading}>Abilities</Text>
           <LottieView
             autoPlay
             loop

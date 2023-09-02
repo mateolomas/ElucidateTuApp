@@ -24,18 +24,21 @@ export const initialQuestions = [
   },
   {
     id: 2,
-    question: 'What is your name?',
+    question: 'What is your favorite type of music?',
   },
+
   {
     id: 3,
-    question: 'What is your favorite color?',
+    question: 'Do you prefer coffee or tea?',
   },
+
   {
     id: 4,
-    question: 'What is your favorite food?',
+    question: 'What is your favorite movie genre?',
   },
+
   {
     id: 5,
-    question: 'What is your favorite animal?',
+    question: 'How do you like to spend your weekends?',
   },
 ];

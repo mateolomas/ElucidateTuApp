@@ -1,3 +1,4 @@
+import LottieView from 'lottie-react-native';
 import React from 'react';
 import {ImageBackground, View} from 'react-native';
 import Button from 'src/components/Button';
@@ -8,19 +9,27 @@ import Text from 'src/components/Text';
 const WelcomeToQuiz = ({navigation}: {navigation: any}) => {
   return (
     <LayoutWithButton
-      onPress={() => navigation.navigate('InitialQuestions', 1)}
+      onPress={() => {
+        navigation.pop();
+        navigation.replace('InitialQuestions', 1);
+      }}
       buttonTitle="Start Quiz"
       backgroundColor="white">
-      <ImageBackground
-        source={require('../../../assets/images/walkthrough/Walk2.png')}
-        style={{width: 455, height: 325}}
+      <Heading variant="h1" color="green">
+        Elu
+      </Heading>
+      <LottieView
+        autoPlay
+        loop
+        style={{width: 200, height: 200}}
+        source={require('../../../assets/lottie/RobotNiceNice.json')}
       />
-      <View style={{padding: 20}}>
+
+      <View style={{padding: 20, flex: 1}}>
         <Heading>Create Your Profile Now!</Heading>
         <Heading variant="h5">Let's get to know you better</Heading>
         <Heading variant="body">
-          Create a profile to save your learning progress and keep learning for
-          free!
+          Lets' train Elu for know you better and give you the best experience
         </Heading>
       </View>
     </LayoutWithButton>
