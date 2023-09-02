@@ -1,16 +1,21 @@
 import {Badge, Button, Card} from '@rneui/base';
 import LottieView from 'lottie-react-native';
 import React, {useEffect} from 'react';
-import {SafeAreaView, StyleSheet, View} from 'react-native';
+import {SafeAreaView, StyleSheet, TouchableOpacity, View} from 'react-native';
 import {ScrollView, Text} from 'react-native';
 
-const Cart = () => {
+const Cart = ({navigation}: {navigation: any}) => {
   const achievements = [
     {title: 'Reading', description: 'Completed 5 lessons', color: 'green'},
     {title: 'Listening', description: 'Completed 10 lessons', color: 'blue'},
     {title: 'Writing', description: 'Completed 20 lessons', color: 'purple'},
     {title: 'Speaking', description: 'Completed 50 lessons', color: 'orange'},
   ];
+
+  const onPress = (achievement: any) => () => {
+    console.log({achievement});
+    navigation.navigate('Abilities', achievement.title);
+  };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -34,19 +39,23 @@ const Cart = () => {
       </View>
 
       {achievements.map((achievement, index) => (
-        <Card
-          key={index}
-          containerStyle={[styles.card, {backgroundColor: achievement.color}]}>
-          <Badge
-            badgeStyle={styles.badge}
-            value={achievement.title}
-            textStyle={styles.badgeText}
-          />
-          <Text style={styles.achievementTitle}>{achievement.title}</Text>
-          <Text style={styles.achievementDescription}>
-            {achievement.description}
-          </Text>
-        </Card>
+        <TouchableOpacity key={index} onPress={onPress(achievement)}>
+          <Card
+            containerStyle={[
+              styles.card,
+              {backgroundColor: achievement.color},
+            ]}>
+            <Badge
+              badgeStyle={styles.badge}
+              value={achievement.title}
+              textStyle={styles.badgeText}
+            />
+            <Text style={styles.achievementTitle}>{achievement.title}</Text>
+            <Text style={styles.achievementDescription}>
+              {achievement.description}
+            </Text>
+          </Card>
+        </TouchableOpacity>
       ))}
     </ScrollView>
   );

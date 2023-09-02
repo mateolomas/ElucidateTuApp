@@ -1,9 +1,16 @@
 
 require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
+require_relative '../node_modules/react-native-permissions/scripts/setup'
+
 platform :ios, min_ios_version_supported
 prepare_react_native_project!
+
+setup_permissions(['Microphone'])
+
 use_react_native!
+
+
 # Force pods to match minimum iOS version for React Native
 # Fixes build issue on Xcode Cloud where some pods
 # Use iOS 12 calls despite being set as iOS 11
@@ -18,6 +25,11 @@ def __apply_Xcode_14_3_RC_post_install_workaround(installer)
     end
   end
 end
+
+
+
+
+
 
 
 

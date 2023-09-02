@@ -12,11 +12,7 @@ import {
 } from 'react-native';
 import Heading from 'src/components/Heading';
 
-const ChatWithBot2 = ({
-  navigation,
-}: {
-  navigation: {navigate: (arg0: string) => void};
-}) => {
+const ChatWithBot2 = ({navigation}: {navigation: any}) => {
   const userId = '12313';
   return (
     <KeyboardAvoidingView
@@ -33,10 +29,20 @@ const ChatWithBot2 = ({
       <Text
         style={{
           padding: 10,
-          textAlign: 'center',
+          textAlign: 'justify',
         }}>
-        Esto ayudara a Elu a conocerte mejor y darte la mejor experiencia
+        Esto ayudara a Elu a conocerte mejor y darte la mejor experiencia,
+        recuerda, que entre mas sincero seas, mejor sera la experiencia. Y mas
+        preguntas, mucho mejor. Sin embargo, si no quieres responder, puedes
+        saltar esta parte en el boton de terminar.
       </Text>
+      <Button
+        color={'warning'}
+        onPress={() => {
+          navigation.replace('HomeNavigator');
+        }}>
+        <Text>Terminar</Text>
+      </Button>
       <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
         <LottieView
           autoPlay

@@ -51,6 +51,11 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+
+  
+	<key>NSMicrophoneUsageDescription</key>
+  	<string>YOUR TEXT</string>
+  
 	<key>UIAppFonts</key>
 	<array>
 		<string>Entypo.ttf</string>

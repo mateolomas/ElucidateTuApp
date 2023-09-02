@@ -9,6 +9,8 @@ import BottomTabsHome from './BottomTabs';
 import CalendarScreen from 'src/screens/Calendar';
 import ChatWithBot from 'src/screens/ChatWithBot';
 import ChatWithBot2 from 'src/screens/ChatWithBot2';
+import Cart from 'src/screens/Home/Cart';
+import Abilities from 'src/screens/Abilities';
 
 const Stack = createNativeStackNavigator();
 
@@ -32,6 +34,7 @@ const StartQuizNavigator = () => {
       <Stack.Screen name="CalendarScreen" component={CalendarScreen} />
       <Stack.Screen name="ChatWithBot" component={ChatWithBot} />
       <Stack.Screen name="ChatWithBot2" component={ChatWithBot2} />
+      <Stack.Screen name="Abilities" component={Abilities} />
     </Stack.Navigator>
   );
 };

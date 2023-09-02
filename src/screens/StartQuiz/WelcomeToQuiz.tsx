@@ -15,9 +15,13 @@ const WelcomeToQuiz = ({navigation}: {navigation: any}) => {
       }}
       buttonTitle="Start Quiz"
       backgroundColor="white">
+        <View style={{
+          marginTop: 40,
+        }}>
       <Heading variant="h1" color="green">
         Elu
       </Heading>
+      </View>
       <LottieView
         autoPlay
         loop

@@ -17,6 +17,7 @@ import InitialQuestions from 'src/screens/StartQuiz/InitialQuestions';
 import Rulette from 'src/screens/StartQuiz/Rulette';
 import WelcomeToQuiz from 'src/screens/StartQuiz/WelcomeToQuiz';
 import ChatWithBot2 from 'src/screens/ChatWithBot2';
+import Abilities from 'src/screens/Abilities';
 
 const Stack = createNativeStackNavigator();
 
@@ -48,6 +49,7 @@ const LogInNavigator = () => {
       <Stack.Screen name="BeforeStart" component={BeforeStart} />
       <Stack.Screen name="Rulette" component={Rulette} />
       <Stack.Screen name="ChatWithBot2" component={ChatWithBot2} />
+      <Stack.Screen name="Abilities" component={Abilities} />
     </Stack.Navigator>
   );
 };
