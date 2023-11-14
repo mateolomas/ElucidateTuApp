@@ -19,13 +19,13 @@ public class MainApplication extends Application implements ReactApplication {
           return BuildConfig.DEBUG;
         }
 
-        @Override
+       /*  @Override
         protected List<ReactPackage> getPackages() {
             return Arrays.<ReactPackage>asList(
                     new MainReactPackage(),
             new SplashScreenReactPackage()  //here
             );
-        }
+        } */
 
         @Override
         protected List<ReactPackage> getPackages() {
