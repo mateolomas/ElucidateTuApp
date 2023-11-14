@@ -23,12 +23,11 @@ const BottomTabsHome = ({
       initialRouteName="Explore"
       screenOptions={{
         tabBarStyle: {
-          height: 65,
+          height: 85,
           borderTopWidth: 0,
           elevation: 0,
         },
         headerShown: false,
-
         tabBarShowLabel: false,
       }}>
       <Tab.Screen
@@ -36,7 +35,7 @@ const BottomTabsHome = ({
         component={Explore}
         options={{
           tabBarIcon: ({color}) => (
-            <Icon name="home" color={'#258A79'} size={28} />
+            <Icon name="home" color={'#86DFD0'} size={28} />
           ),
         }}
       />
@@ -45,7 +44,7 @@ const BottomTabsHome = ({
         component={Cart}
         options={{
           tabBarIcon: ({color}) => (
-            <Icon name="amp-stories" color={'#258A79'} size={28} />
+            <Icon name="amp-stories" color={'#86DFD0'} size={28} />
           ),
         }}
       />
@@ -62,8 +61,8 @@ const BottomTabsHome = ({
 
                   justifyContent: 'center',
                   alignItems: 'center',
-                  backgroundColor: '#258A79',
-                  borderColor: '#258A79',
+                  backgroundColor: '#86DFD0',
+                  borderColor: '#86DFD0',
                   borderWidth: 2,
                   borderRadius: 30,
                   top: -25,
@@ -81,7 +80,7 @@ const BottomTabsHome = ({
         component={Notifications}
         options={{
           tabBarIcon: ({color}) => (
-            <Icon name="chat" color={'#258A79'} size={28} />
+            <Icon name="chat" color={'#86DFD0'} size={28} />
           ),
         }}
       />
@@ -90,7 +89,7 @@ const BottomTabsHome = ({
         component={Profile}
         options={{
           tabBarIcon: ({color}) => (
-            <Icon name="settings" color={'#258A79'} size={28} />
+            <Icon name="settings" color={'#86DFD0'} size={28} />
           ),
         }}
       />
